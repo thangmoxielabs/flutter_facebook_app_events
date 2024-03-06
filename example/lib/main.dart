@@ -50,7 +50,8 @@ class MyApp extends StatelessWidget {
                 child: Text("Test logAddToCart"),
                 onPressed: () {
                   facebookAppEvents.logAddToCart(
-                    id: '1',
+                    content: [FbContentItem(id: '1', quantity: 1)],
+                    id: ['1'],
                     type: 'product',
                     price: 99.0,
                     currency: 'TRY',

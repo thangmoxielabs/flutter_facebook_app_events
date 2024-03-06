@@ -1,7 +1,10 @@
 import 'dart:async';
 import 'dart:convert';
 
+import 'package:facebook_app_events/fb_content.dart';
 import 'package:flutter/services.dart';
+
+export 'fb_content.dart';
 
 const channelName = 'flutter.oddbit.id/facebook_app_events';
 
@@ -188,9 +191,10 @@ class FacebookAppEvents {
   /// Log this event when the user has added item to cart
   ///
   /// See: https://developers.facebook.com/docs/reference/androidsdk/current/facebook/com/facebook/appevents/appeventsconstants.html/#eventnameaddedtocart
+  /// See: https://developers.facebook.com/docs/marketing-api/app-event-api/app-events-api-for-collaborative-ads/
   Future<void> logAddToCart({
-    Map<String, dynamic>? content,
-    required String id,
+    required FbContent content,
+    required List<String> id,
     required String type,
     required String currency,
     required double price,
@@ -198,8 +202,8 @@ class FacebookAppEvents {
     return logEvent(
       name: eventNameAddedToCart,
       parameters: {
-        paramNameContent: content != null ? json.encode(content) : null,
-        paramNameContentId: id,
+        paramNameContent: content.isNotEmpty ? json.encode(content) : null,
+        paramNameContentId: json.encode(id),
         paramNameContentType: type,
         paramNameCurrency: currency,
       },
