@@ -198,6 +198,7 @@ class FacebookAppEvents {
     required String type,
     required String currency,
     required double price,
+    Map<String, dynamic>? params,
   }) {
     return logEvent(
       name: eventNameAddedToCart,
@@ -206,6 +207,7 @@ class FacebookAppEvents {
         paramNameContentId: json.encode(id),
         paramNameContentType: type,
         paramNameCurrency: currency,
+        ...params ?? {},
       },
       valueToSum: price,
     );
