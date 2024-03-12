@@ -203,7 +203,8 @@ class FacebookAppEvents {
     return logEvent(
       name: eventNameAddedToCart,
       parameters: {
-        paramNameContent: content.isNotEmpty ? json.encode(content) : null,
+        paramNameContent:
+            content.isNotEmpty ? json.encode(content.toMap()) : null,
         paramNameContentId: json.encode(id),
         paramNameContentType: type,
         paramNameCurrency: currency,

@@ -28,3 +28,9 @@ class FbContentItem {
 }
 
 typedef FbContent = List<FbContentItem>;
+
+extension FbContentExtension on FbContent {
+  List<Map<String, dynamic>> toMap() {
+    return map((item) => item.toMap()).toList();
+  }
+}
